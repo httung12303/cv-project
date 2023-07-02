@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import OrganizationInput from '../Utils/OrganizationInput';
 import Form from './Form';
+import AddBtn from './AddBtn';
 
 export default class OrganizationForm extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ export default class OrganizationForm extends Component {
     });
   }
   render() {
+    if(!this.props.visibility) return null;
     return (
       <Form
         title={this.title}
@@ -52,9 +54,7 @@ export default class OrganizationForm extends Component {
             );
           })}
         </div>
-        <button type="button" onClick={this.onAddBtnClick}>
-          Add
-        </button>
+        <AddBtn onClick={this.onAddBtnClick}/>
       </Form>
     );
   }

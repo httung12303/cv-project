@@ -3,6 +3,7 @@ import Input from '../Utils/Input';
 import React, { Component } from 'react';
 import Removable from '../Utils/Removable';
 import uniqid from 'uniqid';
+import AddBtn from '../Utils/AddBtn';
 
 export default class SkillForm extends Component {
   constructor(props) {
@@ -39,21 +40,22 @@ export default class SkillForm extends Component {
     });
   }
   render() {
+    if (!this.props.visibility) return null;
     const { onSubmit } = this.props;
     return (
       <Form title="Skills" onSubmit={() => onSubmit(this.state.items)}>
-        {this.state.items.map((item, index) => (
-          <Removable id={item.id} key={item.id} onDelete={this.onDelete}>
-            <Input
-              label={`#${index + 1}`}
-              value={item.name}
-              onChange={this.onChange}
-            />
-          </Removable>
-        ))}
-        <button type="button" onClick={this.onAddBtnClick}>
-          Add
-        </button>
+        <div className="items-container skills-container">
+          {this.state.items.map((item, index) => (
+            <Removable id={item.id} key={item.id} onDelete={this.onDelete}>
+              <Input
+                label={`#${index + 1}`}
+                value={item.name}
+                onChange={this.onChange}
+              />
+            </Removable>
+          ))}
+        </div>
+        <AddBtn onClick={this.onAddBtnClick} />
       </Form>
     );
   }

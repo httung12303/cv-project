@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Input from '../Utils/Input';
 import Form from '../Utils/Form';
+import TextArea from '../Utils/TextArea';
 
 export default class General extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ export default class General extends Component {
       ...props.info,
     };
     this.onChangeFunction = this.onChangeFunction.bind(this);
+    this.onImgChange = this.onImgChange.bind(this);
   }
   onChangeFunction(field) {
     return (e) => {
@@ -17,8 +19,24 @@ export default class General extends Component {
       this.setState(newState);
     };
   }
+  onImgChange(e) {
+    const target = e.currentTarget;
+    const avatar = target.files[0];
+    this.setState({ avatar: avatar || null });
+  }
   render() {
-    const { name, title, birthday, phone, email, address, link } = this.state;
+    if (!this.props.visibility) return null;
+    const {
+      name,
+      title,
+      birthday,
+      sex,
+      phone,
+      email,
+      address,
+      link,
+      introduction,
+    } = this.state;
     const onSubmit = this.props.onSubmit;
     return (
       <Form title={'General'} onSubmit={() => onSubmit(this.state)}>
@@ -31,6 +49,11 @@ export default class General extends Component {
           label="Title"
           value={title}
           onChange={this.onChangeFunction('title')}
+        />
+        <Input
+          label="Sex"
+          value={sex}
+          onChange={this.onChangeFunction('sex')}
         />
         <Input
           label="Birthday"
@@ -57,6 +80,15 @@ export default class General extends Component {
           value={address}
           onChange={this.onChangeFunction('address')}
         />
+        <TextArea
+          label="Introduction"
+          value={introduction}
+          onChange={this.onChangeFunction('introduction')}
+        />
+        <div className="input">
+          <label>Avatar</label>
+          <input type="file" accept="image/*" onChange={this.onImgChange} />
+        </div>
       </Form>
     );
   }

@@ -3,6 +3,7 @@ import Form from './Form';
 import Input from './Input';
 import Removable from './Removable';
 import uniqid from 'uniqid';
+import AddBtn from './AddBtn';
 
 export default class ExtraForm extends Component {
   constructor(props) {
@@ -45,19 +46,26 @@ export default class ExtraForm extends Component {
     this.setState({ items });
   }
   render() {
-    const { onSubmit } = this.props;
+    if (!this.props.visibility) return null;
     return (
-      <Form title={this.title} onSubmit={onSubmit}>
-        {this.state.items.map(({ description, time, id }, index) => (
-          <Removable id={id} onDelete={this.onDelete} key={id}>
-            <h3>{`#${index + 1}`}</h3>
-            <Input label="Description" value={description} onChange={this.onChange} />
-            <Input label="Time" value={time} onChange={this.onChange} />
-          </Removable>
-        ))}
-        <button type="button" onClick={this.onAddBtnClick}>
-          Add
-        </button>
+      <Form
+        title={this.title}
+        onSubmit={() => this.props.onSubmit(this.state.items)}
+      >
+        <div className="items-container">
+          {this.state.items.map(({ description, time, id }, index) => (
+            <Removable id={id} onDelete={this.onDelete} key={id}>
+              <h3>{`#${index + 1}`}</h3>
+              <Input
+                label="Description"
+                value={description}
+                onChange={this.onChange}
+              />
+              <Input label="Time" value={time} onChange={this.onChange} />
+            </Removable>
+          ))}
+        </div>
+        <AddBtn onClick={this.onAddBtnClick} />
       </Form>
     );
   }
