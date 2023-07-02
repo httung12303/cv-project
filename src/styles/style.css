@@ -1,0 +1,316 @@
+@font-face {
+  font-family: 'Varela Round';
+  src: './font/Varela_Round/VarelaRound-Regular.ttf';
+}
+:root {
+  font-size: 1vw;
+  font-family: 'Varela Round', sans-serif;
+  --font-color: #2b3d41;
+  --secondary-color: #c57b57;
+  --body-bg: #bdbbb6;
+  --preview-bg: #f0f6f6;
+  --border-size: 0.25rem;
+  --title-padding: 0.4rem;
+  --avatar-size: 12vw;
+  --name-size: 2rem;
+  --section-title-underline-color: #c1c1c1;
+  --form-container-bg-color: rgb(141, 153, 174, 0.7);
+  --form-bg-color: #f0f6f6;
+  --default-transition: all 0.5s ease-in-out;
+  --red: #f06449;
+  --green: #44af69;
+  --vertical-input-padding: 0.25rem;
+  --horizontal-input-padding: 0.6rem;
+}
+* {
+  color: var(--font-color);
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+button,
+input[type='text'],
+textarea {
+  appearance: none;
+  border: none;
+}
+input[type='text'],
+input[type='file'],
+textarea {
+  margin-bottom: 1rem;
+  width: 20vw;
+  margin-left: auto;
+}
+input[type='text'],
+textarea {
+  border: 1px solid var(--font-color);
+  padding: var(--vertical-input-padding) var(--horizontal-input-padding);
+  border-radius: 1rem;
+}
+input[type='text']:focus,
+textarea:focus {
+  border: none;
+  outline: none;
+  border: 2px solid var(--font-color);
+}
+textarea {
+  resize: none;
+  height: 4rem;
+}
+button {
+  color: var(--form-bg-color);
+  transition: var(--default-transition);
+}
+button:hover {
+  transform: scale(1.1);
+  transition: var(--default-transition);
+}
+.name,
+.title {
+  color: var(--secondary-color);
+}
+.description {
+  width: 100%;
+  white-space: pre-wrap;
+}
+body {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--body-bg);
+}
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  position: relative;
+}
+.preview {
+  width: 60vw;
+  padding: 6vh 3vw;
+  background-color: var(--preview-bg);
+  display: flex;
+  flex-flow: column wrap;
+  min-height: 100vh;
+}
+.general {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-end;
+  position: relative;
+}
+.general img {
+  align-self: flex-start;
+
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  height: 12vw;
+  border-radius: 50%;
+  border: var(--border-size) solid var(--secondary-color);
+
+  position: absolute;
+}
+.general .name-line,
+.general .others {
+  flex: 0 0 auto;
+  padding-left: 1vw;
+  width: calc(100% - var(--avatar-size));
+}
+.general .name-line {
+  border-bottom: var(--border-size) solid var(--secondary-color);
+  padding-bottom: var(--title-padding);
+  padding-top: calc(
+    var(--avatar-size) / 2 - var(--name-size) - var(--title-padding)
+  );
+  display: flex;
+  align-items: baseline;
+}
+.name {
+  font-size: var(--name-size);
+  text-transform: capitalize;
+}
+.title {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  margin-left: auto;
+}
+.general .others {
+  padding-top: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 1rem 0;
+}
+.general-item {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem;
+}
+section {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+section .content {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1.5rem;
+  width: 100%;
+}
+section h2 {
+  padding-bottom: 0.5rem;
+  border-bottom: 0.15rem solid var(--section-title-underline-color);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+section h2,
+section h3 {
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--secondary-color);
+}
+.organization-name {
+  font-weight: 600;
+  color: black;
+}
+.organization-item {
+  display: grid;
+  grid-template-columns: 35% 65%;
+}
+.sub-sections {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 2rem;
+}
+.sub-sections > * {
+  flex: 1 0 0;
+}
+.sub-sections > section > .content {
+  flex-flow: row wrap;
+  gap: 0.5rem;
+}
+.skill {
+  padding: 0.4rem 0.6rem;
+  background-color: white;
+  border-radius: 0.8rem;
+  border: 0.12rem solid var(--secondary-color);
+}
+.item {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.4rem;
+}
+.form-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--form-container-bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section {
+  position: relative;
+}
+.edit-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+
+  border: none;
+
+  background-color: var(--secondary-color);
+  padding: 0.25rem 0.3rem;
+  text-transform: uppercase;
+}
+section:hover .edit-btn {
+  display: block;
+}
+form {
+  background-color: var(--form-bg-color);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 1.5rem;
+  width: 30vw;
+  border-radius: 1rem;
+}
+form,
+.items-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.items-container,
+.removable {
+  width: 100%;
+}
+.items-container {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+.input {
+  display: flex;
+  width: 100%;
+  flex-flow: row nowrap;
+  align-items: baseline;
+}
+form h2,
+label {
+  color: var(--secondary-color);
+}
+form h2 {
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.removable {
+  position: relative;
+}
+.remove-btn {
+  color: var(--form-bg-color);
+  background-color: var(--red);
+  font-weight: 700;
+  width: 1.2rem;
+  height: 1.2rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0.2rem;
+}
+.add-btn {
+  background-color: var(--green);
+  margin-bottom: 0.5rem;
+}
+.submit-btn {
+  background-color: var(--secondary-color);
+}
+.add-btn,
+.submit-btn {
+  width: 5rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+}
+.skills-container .remove-btn {
+  top: var(--vertical-input-padding);
+}
+.skills-container input[type='text'] {
+  margin-right: 2rem;
+}
+.download-btn {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  width: 5rem;
+  height: 5rem;
+  background-color: var(--form-bg-color);
+  border-radius: 50%;
+  color: var(--secondary-color);
+  font-size: 2.5rem;
+}
