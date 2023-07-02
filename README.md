@@ -1,19 +1,25 @@
-# Idea
+# CV Application
 
-How I'll structure the web page:
-- The preview version of the CV will be displayed by default.
-- The CV will be split into multiple sections:
-  - General information
-    - Name, title, birthday, phone, email, address, link
-  - Education
-    - Major, time, institution, description
-  - Work exp
-    - Title, time, company, description
-  - Prizes
-    - Name, time
-  - Skills
-    - Name and brief description
-  - Certifications
-    - Name, time
-- Users hover each of these sections to show their edit button, which will display their forms accordingly
-- Options to download and see example.
+This project was created with `create-react-app` as the React introduction project in [TOP](https://www.theodinproject.com/dashboard).
+
+## How to run?
+
+Run the command `npm install`.
+
+If you want to run the page locally, simply run `npm run start` in the terminal.
+
+If you want to deploy it, first run `npm run build` and then deploy the `build` folder your way.
+
+## How to use the application?
+
+Hover on any of the section, that section's edit button will appear, allowing you to insert your information.
+
+There's a download button in the bottom left corner of the screen, which will download the modified CV in pdf format.
+
+## What I learnt
+
+This project gave me a first look at React - class based specifically, and introduced the component-based design mindset. It has been a long time since I last touch HTML and CSS, so it was a solid revision.
+
+Aside from that, I also learnt how to allow users to download HTML elements as PDF and how to use [FontAwesome](https://fontawesome.com/)'s amazing free icons.
+
+Overall, a nice and simple introduction to React.
